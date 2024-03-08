@@ -18,9 +18,7 @@ export default class UserController {
     if (status !== 'SUCCESSFUL') {
       return res.status(mapStatusHTTP(status)).json(data);
     }
-
-    // const token = generateToken(data.dataValues);
-    // return res.status(mapStatusHTTP(status)).json({ token, data: [] });
-    return res.status(mapStatusHTTP(status)).json({ data: [] });
+    const token = generateToken(data.dataValues);
+    return res.status(mapStatusHTTP(status)).json({ token });
   }
 }

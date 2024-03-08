@@ -3,4 +3,10 @@ export interface IUser {
   username: string;
   email: string;
   password: string;
+  dataValues?: {
+    id: number;
+    username: string;
+    email: string;
+    password: string;
+  };
 }

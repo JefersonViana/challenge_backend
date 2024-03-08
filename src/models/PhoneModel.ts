@@ -13,4 +13,14 @@ export default class PhoneModel {
     const dbData = await this.model.create(phone);
     return dbData;
   }
+
+  public async updatePhone(id: string, phone: ICellPhone): Promise<number> {
+    const [dbData] = await this.model.update(phone, { where: { id } });
+    return dbData;
+  }
+
+  public async deletePhone(id: string): Promise<number> {
+    const dbData = await this.model.destroy({ where: { id } });
+    return dbData;
+  }
 }

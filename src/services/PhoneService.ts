@@ -11,17 +11,25 @@ export default class PhoneService {
 
   public async getAllPhones(): Promise<ServiceResponse<ICellPhone[]>> {
     const getAllPhones = await this.phoneModel.findAll();
-    if (getAllPhones) {
-      return { status: 'SUCCESSFUL', data: getAllPhones };
-    }
-    return { status: 'SUCCESSFUL', data: [] };
+    return { status: 'SUCCESSFUL', data: getAllPhones };
   }
 
   public async createPhone(phones: ICellPhone[]): Promise<ServiceResponse<ICellPhone[]>> {
+    const data: ICellPhone[] = [];
     for (const phone of phones) {
-      await this.phoneModel.createPhone(phone);
+      const d = await this.phoneModel.createPhone(phone);
+      data.push(d);
     }
-    const data = await this.phoneModel.findAll();
+    return { status: 'SUCCESSFUL', data };
+  }
+
+  public async updatePhone(id: string, phone: ICellPhone): Promise<ServiceResponse<number>> {
+    const data = await this.phoneModel.updatePhone(id, phone);
+    return { status: 'SUCCESSFUL', data };
+  }
+
+  public async deletePhone(id: string): Promise<ServiceResponse<number>> {
+    const data = await this.phoneModel.deletePhone(id);
     return { status: 'SUCCESSFUL', data };
   }
 }

@@ -15,15 +15,6 @@ export default class UserModel implements IUserModel{
       where: { email },
       raw: true,
     });
-
-    if (dbData) {
-      return {
-        id: dbData.dataValues.id,
-        username: dbData.dataValues.username,
-        email: dbData.dataValues.email,
-        password: dbData.dataValues.password,
-      };
-    }
     return dbData;
   }
 
