@@ -19,7 +19,8 @@ export default class UserController {
       return res.status(mapStatusHTTP(status)).json(data);
     }
 
-    const token = generateToken(data.dataValues);
-    return res.status(mapStatusHTTP(status)).json({ token, data: [] });
+    // const token = generateToken(data.dataValues);
+    // return res.status(mapStatusHTTP(status)).json({ token, data: [] });
+    return res.status(mapStatusHTTP(status)).json({ data: [] });
   }
 }

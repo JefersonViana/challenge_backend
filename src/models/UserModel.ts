@@ -13,7 +13,17 @@ export default class UserModel implements IUserModel{
   public async findByEmail(email: string): Promise<IUser | null>{
     const dbData = await this.model.findOne({
       where: { email },
+      raw: true,
     });
+
+    if (dbData) {
+      return {
+        id: dbData.dataValues.id,
+        username: dbData.dataValues.username,
+        email: dbData.dataValues.email,
+        password: dbData.dataValues.password,
+      };
+    }
     return dbData;
   }
 
