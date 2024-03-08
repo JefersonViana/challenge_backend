@@ -10,7 +10,7 @@
     "dev": "tsnd --watch \"./src/**\" --transpile-only ./src/server.ts",
     "build": "tsc --project tsconfig.json",
     "db:reset": "npx -y tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
-    "vercel-build": "npm install && npm run db:reset",
+    "vercel-build": "npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
